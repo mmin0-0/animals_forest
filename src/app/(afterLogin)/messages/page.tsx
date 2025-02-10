@@ -4,7 +4,6 @@ import { BackButton } from '@/app/_component/Button';
 import { H4 } from '@/app/_component/Text';
 import Room from '@/app/(afterLogin)/messages/_component/Room';
 import { Metadata } from 'next';
-import { getRooms } from '@/app/(afterLogin)/messages/_lib/getRooms';
 import { auth } from '@/auth';
 
 export const metadata: Metadata = {
@@ -14,7 +13,6 @@ export const metadata: Metadata = {
 
 export default async function Page() {
   const session = await auth();
-  const rooms = session?.user?.email ? await getRooms(session?.user?.email) : [];
 
   return (
     <main>
@@ -26,9 +24,11 @@ export default async function Page() {
           </PageHeader>
         </TopFixed>
         <style.MessagesCont>
-          {rooms.map((room) => (
-            <Room key={room.room} room={room} />
-          ))}
+          <Room />
+          <Room />
+          <Room />
+          <Room />
+          <Room />
         </style.MessagesCont>
       </style.MessagesMain>
     </main>

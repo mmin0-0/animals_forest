@@ -11,10 +11,18 @@ function generateDate() {
 }
 
 const User = [
-  {id: 'test', nickname: '너굴', image: '/user/profile.png'},
-  {id: 'test01', nickname: '여울', image: '/user/profile01.png'},
-  {id: 'test02', nickname: 'kk', image: '/user/profile02.png'},
-  {id: 'test03', nickname: '뽀야미', image: '/user/profile03.png'},
+  {
+    id: 'test', 
+    nickname: '여울', 
+    image: '/images/user/profile.png',
+    _count: {
+      Followers: 0,
+      Followings: 1
+    }
+  },
+  {id: 'test01', nickname: '너굴', image: '/images/user/profile01.png', _count: {Followers: 3, Followings: 0}},
+  {id: 'test02', nickname: 'kk', image: '/images/user/profile02.png', _count: {Followers: 3, Followings: 1}},
+  {id: 'test03', nickname: '뽀야미', image: '/images/user/profile03.png', _count: {Followers: 1, Followings: 2}},
 ];
 
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));

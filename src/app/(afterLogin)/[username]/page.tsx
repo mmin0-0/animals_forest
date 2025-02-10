@@ -49,7 +49,7 @@ export default async function Page(props: Props) {
     <main>
       <style.ProfileMain>
         <HydrationBoundary state={dehydratedState}>
-          <UserInfo username={username} session={session} />
+          <UserInfo username={username} />
           <div>
             <UserPost username={username} />
           </div>

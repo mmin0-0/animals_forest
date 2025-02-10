@@ -1,17 +1,20 @@
 'use client';
 import * as style from '@/app/styles/pages/messages.css';
+import {faker} from "@faker-js/faker";
 import { PageHeader } from '@/app/styles/component/afterLayout.css';
 import { BackButton } from '@/app/_component/Button';
 import { H4, Strong, Span } from '@/app/_component/Text';
-import { useQuery } from '@tanstack/react-query';
-import { getUser } from '@/app/(afterLogin)/[username]/_lib/getUser';
 
-type Props = {id: string};
-export default function UserInfo({id}:Props) {
-  const { data:user } = useQuery({
-    queryKey: ['users', id],
-    queryFn: getUser,
-  });
+export default function UserInfo() {
+  const user = {
+    id: 'hero',
+    nickname: '영웅',
+    image: faker.image.avatar(),
+  }
+  const messages = [
+    {messageId: 1, roomId: 123, id: 'zerohch0',  content: '안녕하세요.', createdAt: new Date()},
+    {messageId: 2, roomId: 123, id: 'hero', content: '안녕히가세요.', createdAt: new Date()},
+  ];
 
   if(!user){
     return null;

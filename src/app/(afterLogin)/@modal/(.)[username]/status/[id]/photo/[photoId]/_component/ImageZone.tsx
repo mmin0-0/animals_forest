@@ -23,7 +23,7 @@ export default function ImageZone({id}:Props){
       <img src={post?.Images[0].link} alt={post?.Images[0].Post?.content} />
       <style.PhotoImage style={{backgroundImage: `url(${post?.Images[0].link})`}}></style.PhotoImage>
       <style.PhotoButtonZone>
-        <ActionButtons white post={post} />
+        <ActionButtons white />
       </style.PhotoButtonZone>
     </style.PhotoImageZone>
   )
