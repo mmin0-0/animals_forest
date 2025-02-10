@@ -21,7 +21,7 @@ export default async function Page() {
       <style.HomeMain>
         <TabProvider>
           <Tab />
-          <PostForm me={session} />
+          <PostForm />
           <Suspense fallback={<Loading />}>
             <TabDeciderSuspense />
           </Suspense>

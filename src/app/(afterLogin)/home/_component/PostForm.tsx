@@ -6,67 +6,15 @@ import { ChangeEventHandler, FormEvent,MouseEventHandler, useRef, useState } fro
 import TextareaAutosize from 'react-textarea-autosize';
 import { PostImageZone, PostImageBox } from '@/app/styles/component/afterLayout.css';
 import { ActionButton } from '@/app/_component/Button';
-import { Session } from 'next-auth';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { Post } from '@/model/Post';
+import { useSession } from 'next-auth/react';
 
-type Props = { me: Session | null };
-export default function PostForm({ me }: Props) {
+export default function PostForm() {
+  const { data: me } = useSession();
   const imageRef = useRef<HTMLInputElement>(null);
   const [content, setContent] = useState('');
   const [preview, setPreview] = useState<Array<{ dataUrl: string, file: File } | null>>([]);
 
-  const queryClient = useQueryClient();
-  const mutation = useMutation({
-    mutationFn: async (e: FormEvent) => {
-      e.preventDefault();
-      const formData = new FormData();
-      formData.append('content', content);
-      preview.forEach((p) => {
-        if (p) {
-          formData.append('images', p.file);
-        }
-      });
-
-      return fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/posts`, {
-        method: 'post',
-        credentials: 'include',
-        body: formData,
-      });
-    },
-    async onSuccess(response) {
-      const newPost = await response.json();
-      setContent('');
-      setPreview([]);
-      if(queryClient.getQueryData(['posts', 'recommends'])){
-        queryClient.setQueryData(['posts', 'recommends'], (prevData: { pages: Post[][] }) => {
-          const shallow = {
-            ...prevData,
-            pages: [...prevData.pages],
-          };
-          shallow.pages[0] = [...shallow.pages[0]];
-          shallow.pages[0].unshift(newPost);
-          return shallow;
-        });
-      }
-
-      if(queryClient.getQueryData(['posts', 'followings'])){
-        queryClient.setQueryData(['posts', 'followings'], (prevData: { pages: Post[][] }) => {
-          const shallow = {
-            ...prevData,
-            pages: [...prevData.pages],
-          };
-          shallow.pages[0] = [...shallow.pages[0]];
-          shallow.pages[0].unshift(newPost);
-          return shallow;
-        });
-      }
-    },
-    onError() {
-      alert('업로드 중 에러가 발생했습니다.');
-    }
-  });
-
+  const onSubmit = () => {};
   const onChange: ChangeEventHandler<HTMLTextAreaElement> = (e) => { setContent(e.target.value) };
 
   const onClickButton: MouseEventHandler<HTMLButtonElement> = (e) => {
@@ -75,11 +23,11 @@ export default function PostForm({ me }: Props) {
   };
 
   const onRemoveImage = (index: number) => () => {
-    setPreview((prevPreview) => {
-      const prev = [...prevPreview];
-      prev[index] = null;
-      return prev;
-    })
+    // setPreview((prevPreview) => {
+    //   const prev = [...prevPreview];
+    //   prev[index] = null;
+    //   return prev;
+    // })
   };
 
   const onUpload: ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -104,11 +52,11 @@ export default function PostForm({ me }: Props) {
 
   return (
     <style.PostForm>
-      <form onSubmit={mutation.mutate}>
+      <form onSubmit={onSubmit}>
         <style.PostFormInner>
           <style.UserInfo>
             <style.UserImg>
-              <img src={me?.user?.image as string} alt={me?.user?.email as string} />
+              <img src={`/images/${me?.user?.image as string}`} alt={me?.user?.email as string} />
             </style.UserImg>
           </style.UserInfo>
           <style.PostInputSection>

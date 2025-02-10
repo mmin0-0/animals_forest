@@ -20,141 +20,6 @@ export default function TweetModal() {
   const imageRef = useRef<HTMLInputElement>(null);
   const [content, setContent] = useState('');
   const [preview, setPreview] = useState<Array<{ dataUrl: string, file: File } | null>>([]);
-  const queryClient = useQueryClient();
-  const modalStore = useModalStore();
-  const parent = modalStore.data;
-
-  const mutation = useMutation({
-    mutationFn: async (e: FormEvent) => {
-      e.preventDefault();
-      const formData = new FormData();
-      formData.append('content', content);
-      preview.forEach((p) => {
-        p && formData.append('images', p.file);
-      })
-      return fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/posts`, {
-        method: 'post',
-        credentials: 'include',
-        body: formData,
-      });
-    },
-    async onSuccess(response) {
-      const newPost = await response.json();
-      setContent('');
-      setPreview([]);
-      const queryCache = queryClient.getQueryCache()
-      const queryKeys = queryCache.getAll().map(cache => cache.queryKey)
-      console.log('queryKeys', queryKeys);
-      queryKeys.forEach((queryKey) => {
-        if (queryKey[0] === 'posts') {
-          console.log(queryKey[0]);
-          const value: Post | InfiniteData<Post[]> | undefined = queryClient.getQueryData(queryKey);
-          if (value && 'pages' in value) {
-            console.log('array', value);
-            const obj = value.pages.flat().find((v) => v.postId === parent?.postId);
-            if (obj) { // 존재는 하는지
-              const pageIndex = value.pages.findIndex((page) => page.includes(obj));
-              const index = value.pages[pageIndex].findIndex((v) => v.postId === parent?.postId);
-              console.log('found index', index);
-              const shallow = {
-                ...value,
-                pages: [...value.pages],
-              };
-              shallow.pages[0] = [...shallow.pages[0]];
-              shallow.pages[0].unshift(newPost); // 새 게시글 추가
-              queryClient.setQueryData(queryKey, shallow);
-            }
-          }
-        }
-      });
-      await queryClient.invalidateQueries({
-        queryKey: ['trends']
-      });
-    },
-    onError(error) {
-      console.error(error);
-      alert('업로드 중 에러가 발생했습니다.');
-    },
-    onSettled() {
-      router.back();
-    }
-  });
-
-  const comment = useMutation({
-    mutationFn: (e: FormEvent) => {
-      e.preventDefault();
-      const formData = new FormData();
-      formData.append('content', content);
-      preview.forEach((p) => {
-        p && formData.append('images', p.file);
-      })
-      return fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/posts/${parent?.postId}/comments`, {
-        method: 'post',
-        credentials: 'include',
-        body: formData,
-      });
-    },
-    async onSuccess(response, variable) {
-      const newPost = await response.json();
-      setContent('');
-      setPreview([]);
-      const queryCache = queryClient.getQueryCache()
-      const queryKeys = queryCache.getAll().map(cache => cache.queryKey)
-      console.log('queryKeys', queryKeys);
-      queryKeys.forEach((queryKey) => {
-        if (queryKey[0] === 'posts') {
-          console.log(queryKey[0]);
-          const value: Post | InfiniteData<Post[]> | undefined = queryClient.getQueryData(queryKey);
-          if (value && 'pages' in value) {
-            console.log('array', value);
-            const obj = value.pages.flat().find((v) => v.postId === parent?.postId);
-            if (obj) { // 존재는 하는지
-              const pageIndex = value.pages.findIndex((page) => page.includes(obj));
-              const index = value.pages[pageIndex].findIndex((v) => v.postId === parent?.postId);
-              console.log('found index', index);
-              const shallow = { ...value };
-              value.pages = {...value.pages }
-              value.pages[pageIndex] = [...value.pages[pageIndex]];
-              shallow.pages[pageIndex][index] = {
-                ...shallow.pages[pageIndex][index],
-                Comments: [{ userId: me?.user?.email as string }],
-                _count: {
-                  ...shallow.pages[pageIndex][index]._count,
-                  Comments: shallow.pages[pageIndex][index]._count.Comments + 1,
-                }
-              }
-              shallow.pages[0].unshift(newPost); // 새 답글 추가
-              queryClient.setQueryData(queryKey, shallow);
-            }
-          } else if (value) {
-            // 싱글 포스트인 경우
-            if (value.postId === parent?.postId) {
-              const shallow = {
-                ...value,
-                Comments: [{ userId: me?.user?.email as string }],
-                _count: {
-                  ...value._count,
-                  Comments: value._count.Comments + 1,
-                }
-              }
-              queryClient.setQueryData(queryKey, shallow);
-            }
-          }
-        }
-      });
-      await queryClient.invalidateQueries({
-        queryKey: ['trends']
-      });
-    },
-    onError(error) {
-      console.error(error);
-      alert('업로드 중 에러가 발생했습니다.');
-    },
-    onSettled() {
-      modalStore.reset();
-      router.back();
-    }
-  });
 
   const onChange: ChangeEventHandler<HTMLTextAreaElement> = (e) => { setContent(e.target.value) };
 
@@ -192,11 +57,7 @@ export default function TweetModal() {
   };
 
   const onSubmit: FormEventHandler<HTMLFormElement> = (e) => {
-    if (modalStore.mode === 'new') {
-      mutation.mutate(e);
-    } else {
-      comment.mutate(e);
-    }
+    e.preventDefault();
   };
 
   return (
@@ -207,8 +68,7 @@ export default function TweetModal() {
         </style.ModalHeader>
         <form onSubmit={onSubmit}>
           <style.ModalBody>
-            {modalStore.mode === 'comment' && parent && (
-              <style.Original>
+              {/* <style.Original>
                 <style.PostUserSection>
                   <style.PostUserImg>
                     <img src={parent.User.image} alt={parent.User.id} />
@@ -225,18 +85,17 @@ export default function TweetModal() {
                     </P>
                   </style.OriginalPost>
                 </style.PostUserSection>
-              </style.Original>
-            )}
+              </style.Original> */}
             <style.PostUserSection>
               <style.UserImg>
-                <img src={me?.user?.image as string} alt={me?.user?.email as string} />
+                <img src={`/images/${me?.user?.image as string}`} alt={me?.user?.email as string} />
               </style.UserImg>
               <TextareaAutosize 
                 name="tweetInput" 
                 id="tweetInput" 
                 onChange={onChange} 
                 value={content} 
-                placeholder={modalStore.mode === 'comment' ? '답글 게시하기' : '무슨 일이 일어나고 있나요?'} 
+                placeholder="무슨 일이 일어나고 있나요?" 
               />
             </style.PostUserSection>
             <PostImageZone className="postImageZone">

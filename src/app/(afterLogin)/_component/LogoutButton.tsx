@@ -22,7 +22,7 @@ export default function LogoutButton(){
   return (
     <style.LogoutButton onClick={onLogout}>
       <style.UserImg>
-        <img src={me.user?.image as string} alt={me.user?.email as string} />
+        <img src={`/images/${me.user?.image as string}`} alt={me.user?.email as string} />
         <PostUserImgShade />
       </style.UserImg>
       <Strong styleProps={{weight: "semiBold"}}>{me.user?.name} <Span styleProps={{weight: "normal"}}>@{me.user?.email as string}</Span></Strong>

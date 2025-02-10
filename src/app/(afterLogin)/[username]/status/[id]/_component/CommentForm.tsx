@@ -35,7 +35,7 @@ export default function CommentForm({id}:Props) {
         <style.PostFormInner>
           <style.UserInfo>
             <style.UserImg>
-              <img src={me?.user?.image as string} alt={me?.user?.email as string} />
+              <img src={`/images/${me?.user?.image as string}`} alt={me?.user?.email as string} />
             </style.UserImg>
           </style.UserInfo>
           <style.PostInputSection>
