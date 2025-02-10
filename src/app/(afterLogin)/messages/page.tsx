@@ -2,9 +2,9 @@ import * as style from '@/app/styles/pages/messages.css';
 import { TopFixed, PageHeader } from '@/app/styles/component/afterLayout.css';
 import { BackButton } from '@/app/_component/Button';
 import { H4 } from '@/app/_component/Text';
-import Room from '@/app/(afterLogin)/messages/_component/Room';
 import { Metadata } from 'next';
 import { auth } from '@/auth';
+import RoomList from '@/app/(afterLogin)/messages/_component/RoomList';
 
 export const metadata: Metadata = {
   title: '쪽지',
@@ -13,7 +13,6 @@ export const metadata: Metadata = {
 
 export default async function Page() {
   const session = await auth();
-
   return (
     <main>
       <style.MessagesMain>
@@ -24,11 +23,7 @@ export default async function Page() {
           </PageHeader>
         </TopFixed>
         <style.MessagesCont>
-          <Room />
-          <Room />
-          <Room />
-          <Room />
-          <Room />
+          <RoomList  />
         </style.MessagesCont>
       </style.MessagesMain>
     </main>

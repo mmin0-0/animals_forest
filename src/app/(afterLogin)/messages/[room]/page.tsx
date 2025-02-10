@@ -18,12 +18,6 @@ type Props = {
 }
 export default async function ChatRoom({ params }: Props) {
   const session = await auth();
-  const queryClient = new QueryClient();
-  const ids = params.room.split('-').filter((v) => v !== session?.user?.email);
-  if (!ids[0]) {
-    return null;
-  }
-  await queryClient.prefetchQuery({queryKey: ['users', ids[0]], queryFn: getUserServer})
 
   return (
     <main>

@@ -6,41 +6,35 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import 'dayjs/locale/ko';
 import { useRouter } from 'next/navigation';
 import { Strong, Span } from '@/app/_component/Text';
+import { Room as IRoom } from '@/model/Room';
 
 dayjs.locale('ko');
 dayjs.extend(relativeTime);
 
-export default function Room(){
+type Props = {room: IRoom};
+export default function Room({room}:Props){
   const router = useRouter();
-  const user = {
-    id: 'hero',
-    nickname: '영웅',
-    Messages: [
-      {roomId: 123, content: '안녕하세요.', createdAt: new Date()},
-      {roomId: 123, content: '안녕히가세요.', createdAt: new Date()},
-    ],
-  };
-
   const onClick =() => {
-    router.push(`/messages/${user.Messages.at(-1)?.roomId}`);
+    router.push(`/messages/${room.roomId}`);
   };
   
   return (
     <style.RoomWrap onClickCapture={onClick}>
       <style.UserImg>
-        <img src={faker.image.avatar()} alt=""/>
+        {/* <img src={faker.image.avatar()} alt=""/> */}
+        <img src={`${room.Receiver.image}`} alt=""/>
       </style.UserImg>
       <style.RoomChatInfo>
         <style.RoomUserInfo>
-          <Strong styleProps={{weight: 'bold'}}>{user.nickname}</Strong>
+          <Strong styleProps={{weight: 'bold'}}>{room.Receiver.nickname}</Strong>
           &nbsp;
-          <Span styleProps={{weight: 'medium'}}>{user.id}</Span>
+          <Span styleProps={{weight: 'medium'}}>{room.Receiver.id}</Span>
           &nbsp;
           &nbsp;
-          <Span>{dayjs(user.Messages?.at(-1)?.createdAt).fromNow(true)}</Span>
+          <Span>{dayjs(room.createdAt).fromNow(true)}</Span>
         </style.RoomUserInfo>
         <style.RoomLastChat>
-          {user.Messages?.at(-1)?.content}
+          {room.content}
         </style.RoomLastChat>
       </style.RoomChatInfo>
     </style.RoomWrap>
