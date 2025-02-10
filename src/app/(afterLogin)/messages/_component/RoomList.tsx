@@ -19,8 +19,6 @@ export default function RoomList(){
     return <div>채팅방을 찾을 수 없습니다.</div>
   }
 
-  
-
   return(
     <>
       {data?.map((room) => <Room key={room.roomId} room={room} />)}

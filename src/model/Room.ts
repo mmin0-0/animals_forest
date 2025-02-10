@@ -4,6 +4,11 @@ export interface Room {
   roomId: string,
   Receiver: User,
   Sender: User,
-  content: string,
-  createdAt: Date,
+  Messages: {
+    content: {
+      ReceiverMessage: string, 
+      SenderMessage: string, 
+    },
+    createdAt: Date,
+  };
 }

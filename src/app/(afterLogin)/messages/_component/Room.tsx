@@ -21,7 +21,6 @@ export default function Room({room}:Props){
   return (
     <style.RoomWrap onClickCapture={onClick}>
       <style.UserImg>
-        {/* <img src={faker.image.avatar()} alt=""/> */}
         <img src={`${room.Receiver.image}`} alt=""/>
       </style.UserImg>
       <style.RoomChatInfo>
@@ -31,10 +30,10 @@ export default function Room({room}:Props){
           <Span styleProps={{weight: 'medium'}}>{room.Receiver.id}</Span>
           &nbsp;
           &nbsp;
-          <Span>{dayjs(room.createdAt).fromNow(true)}</Span>
+          <Span>{dayjs(room.Messages.createdAt).fromNow(true)}</Span>
         </style.RoomUserInfo>
         <style.RoomLastChat>
-          {room.content}
+          {room.Messages.content.SenderMessage}
         </style.RoomLastChat>
       </style.RoomChatInfo>
     </style.RoomWrap>

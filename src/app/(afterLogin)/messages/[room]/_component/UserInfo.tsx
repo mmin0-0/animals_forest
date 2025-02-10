@@ -5,7 +5,8 @@ import { PageHeader } from '@/app/styles/component/afterLayout.css';
 import { BackButton } from '@/app/_component/Button';
 import { H4, Strong, Span } from '@/app/_component/Text';
 
-export default function UserInfo() {
+type Props = {room: string};
+export default function UserInfo({room}:Props) {
   const user = {
     id: 'hero',
     nickname: '영웅',

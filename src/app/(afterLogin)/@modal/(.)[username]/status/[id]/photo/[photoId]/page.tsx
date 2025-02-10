@@ -24,7 +24,7 @@ export default async function PhotoModal(props: Props) {
 
   return (
     <style.PhotoModalCont>
-      <HydrationBoundary state={dehydratedState} >
+      <HydrationBoundary state={dehydratedState}>
         <CloseButton />
         <ImageZone id={id} />
         <style.PhotoModalComment>

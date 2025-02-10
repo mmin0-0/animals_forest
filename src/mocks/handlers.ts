@@ -351,35 +351,24 @@ export const handlers = [
           roomId: 1,
           Receiver: User[1],
           Sender: User[0],
-          content: '안녕하세요.',
+          Messages: {
+            content: {
+              ReceiverMessage: '하이하이',
+              SenderMessage: '반가워요'
+            }
+          },
           createdAt: new Date(),
         },
         {
           roomId: 2,
           Receiver: User[2],
           Sender: User[0],
-          content: '반갑습니다:)',
-          createdAt: new Date(),
-        },
-      ]
-    )
-  }),
-  http.get(`${baseUrl}/api/messages/:roomId`, async ({ request, params }) => {
-    const { roomId } = params;
-    return HttpResponse.json(
-      [
-        {
-          roomId: 1,
-          Receiver: User[1],
-          Sender: User[0],
-          content: '안녕하세요.',
-          createdAt: new Date(),
-        },
-        {
-          roomId: 2,
-          Receiver: User[2],
-          Sender: User[0],
-          content: '반갑습니다:)',
+          Messages: {
+            content: {
+              ReceiverMessage: '저랑 맞팔하실래요?',
+              SenderMessage: '좋아요!'
+            }
+          },
           createdAt: new Date(),
         },
       ]
