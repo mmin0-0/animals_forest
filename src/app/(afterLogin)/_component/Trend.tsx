@@ -8,7 +8,7 @@ export default function Trend({trend}: Props){
     <style.TrendItem href={`/search?q=${encodeURIComponent(trend.title)}`}>
       <P styleProps={{size: 'xsmall'}}>실시간 트렌드</P>
       <Strong styleProps={{weight: "semiBold"}}>{trend.title}</Strong>
-      <P>{`${trend.count.toLocaleString()} posts`}</P>
+      <P styleProps={{size: 'xsmall'}}>{`${trend.count.toLocaleString()} posts`}</P>
     </style.TrendItem>
   )
 }

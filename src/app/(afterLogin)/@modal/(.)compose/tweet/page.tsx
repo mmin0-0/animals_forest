@@ -10,9 +10,6 @@ import { ActionButton } from "@/app/_component/Button";
 import { Strong, P } from "@/app/_component/Text";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
-import { InfiniteData, useMutation, useQueryClient } from "@tanstack/react-query";
-import { Post } from "@/model/Post";
-import { useModalStore } from "@/app/store/modal";
 
 export default function TweetModal() {
   const router = useRouter();

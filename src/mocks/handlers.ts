@@ -20,8 +20,8 @@ const User = [
       Followings: 1
     }
   },
-  {id: 'test01', nickname: '너굴', image: '/images/user/profile01.png', _count: {Followers: 3, Followings: 0}},
-  {id: 'test02', nickname: 'kk', image: '/images/user/profile02.png', _count: {Followers: 3, Followings: 1}},
+  {id: 'test01', nickname: 'kk', image: '/images/user/profile01.png', _count: {Followers: 3, Followings: 0}},
+  {id: 'test02', nickname: '너굴', image: '/images/user/profile02.png', _count: {Followers: 3, Followings: 1}},
   {id: 'test03', nickname: '뽀야미', image: '/images/user/profile03.png', _count: {Followers: 1, Followings: 2}},
 ];
 
@@ -177,35 +177,35 @@ export const handlers = [
         {
           postId: 1,
           User: User[0],
-          content: `${1} 검색결과 ${tag}`,
+          content: `${tag}`,
           Images: [{imageId: 1, link: faker.image.urlLoremFlickr()}],
           createdAt: generateDate(),
         },
         {
           postId: 2,
           User: User[0],
-          content: `${2} 검색결과 ${tag}`,
+          content: `${tag}`,
           Images: [{imageId: 1, link: faker.image.urlLoremFlickr()}],
           createdAt: generateDate(),
         },
         {
           postId: 3,
           User: User[0],
-          content: `${3} 검색결과 ${tag}`,
+          content: `${tag}`,
           Images: [{imageId: 1, link: faker.image.urlLoremFlickr()}],
           createdAt: generateDate(),
         },
         {
           postId: 4,
           User: User[0],
-          content: `${4} 검색결과 ${tag}`,
+          content: `${tag}`,
           Images: [{imageId: 1, link: faker.image.urlLoremFlickr()}],
           createdAt: generateDate(),
         },
         {
           postId: 5,
           User: User[0],
-          content: `${5} 검색결과 ${tag}`,
+          content: `${tag}`,
           Images: [{imageId: 1, link: faker.image.urlLoremFlickr()}],
           createdAt: generateDate(),
         },
@@ -334,15 +334,12 @@ export const handlers = [
   http.get(`${baseUrl}/api/trends`, ({ request }) => {
     return HttpResponse.json(
       [
-        {tagId: 1, title: '제로초', count: 1264},
-        {tagId: 2, title: '원초', count: 1264},
-        {tagId: 3, title: '투초', count: 1264},
-        {tagId: 4, title: '쓰리초', count: 1264},
-        {tagId: 5, title: '포초', count: 1264},
-        {tagId: 6, title: '파이브초', count: 1264},
-        {tagId: 7, title: '식스초', count: 1264},
-        {tagId: 8, title: '세븐초', count: 1264},
-        {tagId: 9, title: '나인초', count: 1264},
+        {tagId: 1, title: '모여봐요 동물의 숲2', count: 1297399},
+        {tagId: 2, title: '인기주민', count: 776482},
+        {tagId: 3, title: '무트코인', count: 126422},
+        {tagId: 4, title: '계절아이템 레시피', count: 1223},
+        {tagId: 5, title: '파라다이스', count: 190},
+        {tagId: 6, title: '눈사람 잘만드는 법', count: 78}
       ]
     )
   }),
