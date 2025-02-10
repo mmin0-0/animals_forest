@@ -2,7 +2,6 @@ import * as style from '@/app/styles/component/header.css';
 import NavMenu from '@/app/(afterLogin)/_component/NavMenu';
 import { Strong } from '@/app/_component/Text';
 import LogoutButton from '@/app/(afterLogin)/_component/LogoutButton';
-// import Icon from '@/app/(afterLogin)/_component/IconWrap';
 import { auth } from '@/auth';
 
 export default async function Header() {
@@ -29,7 +28,7 @@ export default async function Header() {
                     <Strong>게시하기</Strong>
                   </style.PostWrap>
                 </nav>
-                <LogoutButton me={session} />
+                <LogoutButton />
               </>
             }
           </style.MenuWrap>

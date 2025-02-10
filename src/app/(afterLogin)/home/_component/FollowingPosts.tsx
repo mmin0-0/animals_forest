@@ -34,8 +34,6 @@ export default function FollowingPosts() {
         { }
       </Fragment>
     ))}
-    {/* {!isFetching && <div ref={ref} style={{height: 50}} />}
-    {isFetching && <div style={{height: 50}} />} */}
     <div ref={ref} style={{ height: 10 }} />
   </>
 }

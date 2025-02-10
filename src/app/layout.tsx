@@ -5,10 +5,9 @@ import { config } from "@fortawesome/fontawesome-svg-core";
 import ThemeProviderWrap from '@/app/_component/ThemeProviderWrap';
 import StyledComponentsRegistry from '@/app/_lib/registry';
 import { MSWProvider } from "@/app/_component/MSWComponent";
-import Head from "next/head";
 import AuthSession from "@/app/_component/AuthSession";
 
-if (process.env.NEXT_RUNTIME === 'nodejs' && process.env.NODE_ENV !== 'production' && process.env.NEXT_PUBLIC_MSW_ENABLED !== 'false') {
+if (process.env.NEXT_RUNTIME === 'nodejs' && process.env.NODE_ENV !== 'production') {
   const { server } = require('@/mocks/http')
   server.listen()
 }
@@ -29,16 +28,13 @@ const pretendard = localFont({
 
 export const metadata: Metadata = {
   title: "무슨 일이 일어나고 있나요?",
-  description: "Dotori Cafe inspired by X.com",
+  description: "Animals forest inspired by X.com",
 };
 
 type Props = { children: React.ReactNode }
 export default function RootLayout({ children }: Props) {
   return (
     <html lang="ko" className={notoSansKR.variable} suppressHydrationWarning>
-      <Head>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=share" />
-      </Head>
       <body className={pretendard.className}>
         <MSWProvider>
           <AuthSession>

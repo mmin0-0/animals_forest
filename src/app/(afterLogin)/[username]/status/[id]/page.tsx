@@ -68,7 +68,7 @@ export default async function Page({ params }: Props) {
           <style.PostZone>
             <SinglePost id={id} />
             <CommentForm id={id} />
-            <div><Comments id={id} /></div>
+            {/* <div><Comments id={id} /></div> */}
           </style.PostZone>
         </HydrationBoundary>
       </style.SinglePostMain>
