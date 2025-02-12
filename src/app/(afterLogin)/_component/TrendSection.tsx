@@ -1,6 +1,6 @@
 'use client';
 import Trend from '@/app/(afterLogin)/_component/Trend';
-import { H4, P } from '@/app/_component/Text';
+import { Typography } from '@/app/_component/Text';
 import * as style from '@/app/styles/pages/rightSearchZone.css';
 import { useQuery } from '@tanstack/react-query';
 import { useSession } from 'next-auth/react';
@@ -20,7 +20,7 @@ export default function TrendSection(){
   if(session?.user){
     return (
       <style.TrendWrap>
-        <H4 styleProps={{weight: "semiBold"}}>나를 위한 트렌드</H4>
+        <Typography as="h4" styleProps={{weight: 'semiBold'}}>나를 위한 트렌드</Typography>
         <style.TrendCont>
           {data?.map((trend) => <Trend key={trend.title} trend={trend} />)}
         </style.TrendCont>
@@ -31,7 +31,7 @@ export default function TrendSection(){
   return (
     <style.TrendWrap>
       <style.NoTrend>
-        <P styleProps={{weight: 'semiBold'}}>트렌드를 가져올 수 없습니다.</P>
+        <Typography styleProps={{weight: 'semiBold'}}>트렌드를 가져올 수 없습니다.</Typography>
       </style.NoTrend>
     </style.TrendWrap>
   )

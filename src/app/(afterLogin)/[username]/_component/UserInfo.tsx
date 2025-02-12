@@ -1,6 +1,6 @@
 'use client';
 import { ActionButton, BackButton, Button } from '@/app/_component/Button';
-import { H4, Strong, P } from '@/app/_component/Text';
+import { Typography } from '@/app/_component/Text';
 import * as style from '@/app/styles/pages/profile.css';
 import { PageHeader } from '@/app/styles/component/afterLayout.css';
 import { getUser } from '@/app/(afterLogin)/[username]/_lib/getUser';
@@ -24,20 +24,20 @@ export default function UserInfo({ username }: Props) {
       <style.UserInfo>
         <PageHeader>
           <BackButton />
-          <H4 styleProps={{ size: 'medium', weight: 'semiBold' }}>프로필</H4>
+          <Typography as="h4" styleProps={{ size: 'medium', weight: 'semiBold'}}>프로필</Typography>
         </PageHeader>
         <style.InfoBody>
           <style.UserEmptyZone>
             <style.InfoWrap>
               <style.UserImg></style.UserImg>
               <style.UserName>
-                <Strong styleProps={{ size: 'large', weight: 'bold' }}>{`@test`}</Strong>
+                <Typography as="strong" styleProps={{ size: 'large', weight: 'bold'}}>{`@test`}</Typography>
               </style.UserName>
             </style.InfoWrap>
           </style.UserEmptyZone>
         </style.InfoBody>
         <style.EmptyTxt>
-          <Strong styleProps={{ size: 'medium', weight: 'bold' }}>계정이 존재하지 않음</Strong>
+          <Typography styleProps={{ size: 'medium', weight: 'bold'}}>계정이 존재하지 않음</Typography>
         </style.EmptyTxt>
       </style.UserInfo>
     )
@@ -60,7 +60,7 @@ export default function UserInfo({ username }: Props) {
     <style.UserInfo>
       <PageHeader>
         <BackButton />
-        <H4 styleProps={{ size: 'medium', weight: 'semiBold' }}>프로필</H4>
+        <Typography as="h4" styleProps={{ size: 'medium', weight: 'semiBold'}}>프로필</Typography>
       </PageHeader>
       <style.InfoBody>
         <style.UserZone>
@@ -69,8 +69,8 @@ export default function UserInfo({ username }: Props) {
               <img src={user.image} alt={user.id} />
             </style.UserImg>
             <style.UserName>
-              <Strong styleProps={{ size: 'large', weight: 'bold' }}>{user.nickname}</Strong>
-              <P styleProps={{ weight: 'semiBold' }}>{`@${user.id}`}</P>
+              <Typography as="strong" styleProps={{ size: 'large', weight: 'bold' }}>{user.nickname}</Typography>
+              <Typography styleProps={{ weight: 'semiBold' }}>{`@${user.id}`}</Typography>
             </style.UserName>
           </style.InfoWrap>
           {
@@ -84,8 +84,8 @@ export default function UserInfo({ username }: Props) {
         </style.UserZone>
       </style.InfoBody>
       <style.FollowInfo>
-        <P><Strong styleProps={{ weight: 'semiBold' }}>{user._count.Followers} 팔로워</Strong></P>
-        <P><Strong styleProps={{ weight: 'semiBold' }}>{user._count.Followings} 팔로우 중</Strong></P>
+        <Typography styleProps={{ weight: 'semiBold' }}>{user._count.Followers} 팔로워</Typography>
+        <Typography styleProps={{ weight: 'semiBold' }}>{user._count.Followings} 팔로우 중</Typography>
       </style.FollowInfo>
     </style.UserInfo>
   )

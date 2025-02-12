@@ -3,7 +3,7 @@ import * as style from '@/app/styles/pages/messages.css';
 import {faker} from "@faker-js/faker";
 import { PageHeader } from '@/app/styles/component/afterLayout.css';
 import { BackButton } from '@/app/_component/Button';
-import { H4, Strong, Span } from '@/app/_component/Text';
+import { Typography } from '@/app/_component/Text';
 
 type Props = {room: string};
 export default function UserInfo({room}:Props) {
@@ -25,12 +25,12 @@ export default function UserInfo({room}:Props) {
     <>
       <PageHeader>
         <BackButton />
-        <H4 styleProps={{ weight: 'semiBold' }}>{user.nickname}</H4>
+        <Typography as="h4" styleProps={{weight: "semiBold"}}>{user.nickname}</Typography>
       </PageHeader>
       <style.ChatUserInfo href={`/${user.id}`}>
         <img src={user.image} alt="user profile" />
-        <Strong styleProps={{ weight: 'semiBold' }}>{user.nickname}</Strong>
-        <Span styleProps={{ weight: 'medium' }}>@{user.id}</Span>
+        <Typography as="strong" styleProps={{weight: "semiBold"}}>{user.nickname}</Typography>
+        <Typography as="span" styleProps={{weight: "medium"}}>@{user.id}</Typography>
       </style.ChatUserInfo>
     </>
   )

@@ -1,6 +1,6 @@
 'use client';
 import * as modalStyle from '@/app/styles/component/modal.css';
-import { H4 } from '@/app/_component/Text';
+import { Typography } from '@/app/_component/Text';
 import { TextInput, PwInput, FileInput } from '@/app/_component/Input';
 import { InputWrap, InputLabel } from '@/app/styles/component/input.css';
 import { Button, CloseButton } from '@/app/_component/Button';
@@ -37,7 +37,7 @@ export default function SignupModal() {
     <modalStyle.ModalWrap>
       <modalStyle.ModalCont>
         <modalStyle.ModalHeader>
-          <H4 styleProps={{ size: "large", weight: "semiBold" }}>계정을 생성하세요.</H4>
+          <Typography as="h4" styleProps={{ size: "large", weight: "semiBold" }}>계정을 생성하세요.</Typography>
           <CloseButton />
         </modalStyle.ModalHeader>
         <form action={formAction}>

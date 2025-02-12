@@ -3,7 +3,7 @@ import PostArticle from '@/app/(afterLogin)/_component/PostArticle';
 import PostImages from '@/app/(afterLogin)/_component/PostImages';
 import Link from 'next/link';
 import { MouseEventHandler } from 'react';
-import { P, Span } from '@/app/_component/Text';
+import { Typography } from '@/app/_component/Text';
 import { Post as IPost } from '@/model/Post';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
@@ -44,10 +44,10 @@ export default function Post({ noImage, post }: Props) {
         <style.PostBody>
           <style.PostMeta>
             <style.postUserName href={`/${target.User.id}`} onClick={stopPropagation}>
-              <P styleProps={{ weight: 'semiBold' }}>{target.User.nickname}</P>
-              <Span styleProps={{ weight: 'medium' }}>@ {target.User.id}</Span>
+              <Typography styleProps={{weight: 'semiBold'}}>{target.User.nickname}</Typography>
+              <Typography as="span" styleProps={{weight: 'medium'}}>@ {target.User.id}</Typography>
             </style.postUserName>
-            <Span>{dayjs(target.createdAt).fromNow(true)}</Span>
+            <Typography as="span">{dayjs(target.createdAt).fromNow(true)}</Typography>
           </style.PostMeta>
           {target.Parent && <style.PostComment>
             <Link href={`/${target.User.id}`} onClick={stopPropagation}>@{target.User.id} 님에게 보내는 답글</Link>

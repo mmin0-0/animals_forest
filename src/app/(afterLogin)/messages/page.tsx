@@ -1,7 +1,7 @@
 import * as style from '@/app/styles/pages/messages.css';
 import { TopFixed, PageHeader } from '@/app/styles/component/afterLayout.css';
 import { BackButton } from '@/app/_component/Button';
-import { H4 } from '@/app/_component/Text';
+import { Typography } from '@/app/_component/Text';
 import { Metadata } from 'next';
 import { auth } from '@/auth';
 import RoomList from '@/app/(afterLogin)/messages/_component/RoomList';
@@ -19,7 +19,7 @@ export default async function Page() {
         <TopFixed>
           <PageHeader>
             <BackButton />
-            <H4 styleProps={{ weight: 'semiBold' }}>쪽지</H4>
+            <Typography as="h4" styleProps={{weight: "semiBold"}}>쪽지</Typography>
           </PageHeader>
         </TopFixed>
         <style.MessagesCont>

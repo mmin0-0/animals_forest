@@ -1,6 +1,6 @@
 'use client';
 import * as style from '@/app/styles/pages/messages.css';
-import { P } from '@/app/_component/Text';
+import { Typography } from '@/app/_component/Text';
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import 'dayjs/locale/ko';
@@ -28,14 +28,14 @@ export default function MessageList() {
             return (
               <style.Message key={m.messageId} className="myMessage">
                 <style.MessageContent>{m.content}</style.MessageContent>
-                <P styleProps={{ size: 'xsmall' }}>{dayjs(m.createdAt).format('YYYY년 MM월 DD일 A HH시 mm분')}</P>
+                <Typography styleProps={{size: "xsmall"}}>{dayjs(m.createdAt).format('YYYY년 MM월 DD일 A HH시 mm분')}</Typography>
               </style.Message>
             )
           }
           return (
             <style.Message key={m.messageId} className="yourMessage">
               <style.MessageContent>{m.content}</style.MessageContent>
-              <P styleProps={{ size: 'xsmall' }}>{dayjs(m.createdAt).format('YYYY년 MM월 DD일 A HH시 mm분')}</P>
+              <Typography styleProps={{size: "xsmall"}}>{dayjs(m.createdAt).format('YYYY년 MM월 DD일 A HH시 mm분')}</Typography>
             </style.Message>
           )
         })}

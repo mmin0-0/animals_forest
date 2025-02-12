@@ -7,7 +7,7 @@ import TextareaAutosize from 'react-textarea-autosize';
 import { FileInput } from "@/app/_component/Input";
 import { PostImageZone, PostImageBox } from "@/app/styles/component/afterLayout.css";
 import { ActionButton } from "@/app/_component/Button";
-import { Strong, P } from "@/app/_component/Text";
+import { Typography } from "@/app/_component/Text";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 
@@ -65,34 +65,33 @@ export default function TweetModal() {
         </style.ModalHeader>
         <form onSubmit={onSubmit}>
           <style.ModalBody>
-              {/* <style.Original>
-                <style.PostUserSection>
-                  <style.PostUserImg>
-                    <img src={parent.User.image} alt={parent.User.id} />
-                  </style.PostUserImg>
-                  <style.OriginalPost>
-                    <style.UserInfo>
-                      <Strong styleProps={{ weight: 'bold' }}>{parent.User.nickname}</Strong>
-                      <P>{parent.User.id}</P>
-                    </style.UserInfo>
-                    <style.PostContent>{parent.content}</style.PostContent>
-                    <P>
-                      <Link href={`/${parent.User.id}`}>@{parent.User.id}</Link>
-                      님에게 보내는 답글
-                    </P>
-                  </style.OriginalPost>
-                </style.PostUserSection>
-              </style.Original> */}
+            {/* <style.Original>
+              <style.PostUserSection>
+                <style.PostUserImg>
+                  <img src={parent.User.image} alt={parent.User.id} />
+                </style.PostUserImg>
+                <style.OriginalPost>
+                  <style.UserInfo>
+                    <Typography as="strong" styleProps={{ weight: 'bold' }}>{parent.User.nickname}</Typography>
+                    <Typography styleProps={{ weight: 'bold' }}>{parent.User.id}</Typography>
+                  </style.UserInfo>
+                  <style.PostContent>{parent.content}</style.PostContent>
+                  <Typography>
+                    <Link href={`/${parent.User.id}`}>@{parent.User.id} 님에게 보내는 답글</Link>
+                  </Typography>
+                </style.OriginalPost>
+              </style.PostUserSection>
+            </style.Original> */}
             <style.PostUserSection>
               <style.UserImg>
                 <img src={`/images/${me?.user?.image as string}`} alt={me?.user?.email as string} />
               </style.UserImg>
-              <TextareaAutosize 
-                name="tweetInput" 
-                id="tweetInput" 
-                onChange={onChange} 
-                value={content} 
-                placeholder="무슨 일이 일어나고 있나요?" 
+              <TextareaAutosize
+                name="tweetInput"
+                id="tweetInput"
+                onChange={onChange}
+                value={content}
+                placeholder="무슨 일이 일어나고 있나요?"
               />
             </style.PostUserSection>
             <PostImageZone className="postImageZone">

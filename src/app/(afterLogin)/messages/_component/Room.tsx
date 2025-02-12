@@ -5,7 +5,7 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import 'dayjs/locale/ko';
 import { useRouter } from 'next/navigation';
-import { Strong, Span } from '@/app/_component/Text';
+import { Typography } from '@/app/_component/Text';
 import { Room as IRoom } from '@/model/Room';
 
 dayjs.locale('ko');
@@ -25,12 +25,12 @@ export default function Room({room}:Props){
       </style.UserImg>
       <style.RoomChatInfo>
         <style.RoomUserInfo>
-          <Strong styleProps={{weight: 'bold'}}>{room.Receiver.nickname}</Strong>
+          <Typography as="strong" styleProps={{weight: "bold"}}>{room.Receiver.nickname}</Typography>
           &nbsp;
-          <Span styleProps={{weight: 'medium'}}>{room.Receiver.id}</Span>
+          <Typography as="span" styleProps={{weight: "medium"}}>{room.Receiver.id}</Typography>
           &nbsp;
           &nbsp;
-          <Span>{dayjs(room.Messages.createdAt).fromNow(true)}</Span>
+          <Typography as="span">{dayjs(room.Messages.createdAt).fromNow(true)}</Typography>
         </style.RoomUserInfo>
         <style.RoomLastChat>
           {room.Messages.content.SenderMessage}

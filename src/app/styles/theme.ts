@@ -33,6 +33,12 @@ const theme = {
     semiBold: '600',
     bold: '700'
   },
+  fontColor: {
+    primary:'#111111',
+    secondary: '#999999',
+    light: '#f2f2f2',
+    error: '#F20000',
+  },
   spacing: {
     none: '0',
     xsmall: '1rem',

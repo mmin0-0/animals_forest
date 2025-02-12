@@ -1,7 +1,7 @@
 import * as style from '@/app/styles/component/post.css';
 import { TopFixed, PageHeader } from '@/app/styles/component/afterLayout.css';
 import { BackButton } from '@/app/_component/Button';
-import { H4 } from '@/app/_component/Text';
+import { Typography } from '@/app/_component/Text';
 import SinglePost from '@/app/(afterLogin)/[username]/status/[id]/_component/SinglePost';
 import CommentForm from '@/app/(afterLogin)/[username]/status/[id]/_component/CommentForm';
 import Comments from '@/app/(afterLogin)/[username]/status/[id]/_component/Comments';
@@ -62,7 +62,7 @@ export default async function Page({ params }: Props) {
           <TopFixed>
             <PageHeader>
               <BackButton />
-              <H4 styleProps={{ size: 'medium', weight: 'semiBold' }}>게시하기</H4>
+                <Typography as="h4" styleProps={{ size: 'medium', weight: 'semiBold'}}>게시하기</Typography>
             </PageHeader>
           </TopFixed>
           <style.PostZone>

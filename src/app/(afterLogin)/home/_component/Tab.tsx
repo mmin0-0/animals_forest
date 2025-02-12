@@ -1,5 +1,5 @@
 'use client';
-import { H4 } from '@/app/_component/Text';
+import { Typography } from '@/app/_component/Text';
 import * as style from '@/app/styles/component/afterLayout.css';
 import { useContext } from 'react';
 import { TabContext } from '@/app/(afterLogin)/home/_component/TabProvider';
@@ -15,7 +15,7 @@ export default function Tab(){
 
   return (
     <style.TopFixed>
-      <H4 styleProps={{size: "large", weight: "bold"}}>홈</H4>
+      <Typography as="h4" styleProps={{size: "large", weight: "bold"}}>홈</Typography>
       <style.TabWrap>
         <style.TabItem onClick={onClickRec}>
           추천

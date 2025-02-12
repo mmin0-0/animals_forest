@@ -1,6 +1,6 @@
 'use client';
 import * as modalStyle from '@/app/styles/component/modal.css';
-import { H4 } from '@/app/_component/Text';
+import { Typography } from '@/app/_component/Text';
 import { TextInput, PwInput } from '@/app/_component/Input';
 import { Button, CloseButton } from '@/app/_component/Button';
 import { ChangeEventHandler, FormEventHandler, useState } from 'react';
@@ -47,7 +47,7 @@ export default function LoginModal() {
     <modalStyle.ModalWrap>
       <modalStyle.ModalCont>
         <modalStyle.ModalHeader>
-          <H4 styleProps={{ size: "large", weight: "semiBold" }}>로그인하세요.</H4>
+          <Typography as="h4" styleProps={{ size: "large", weight: "semiBold" }}>로그인하세요.</Typography>
           <CloseButton />
         </modalStyle.ModalHeader>
         <form onSubmit={onSubmit}>

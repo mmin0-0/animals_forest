@@ -1,10 +1,8 @@
 'use client';
 import * as style from '@/app/styles/pages/rightSearchZone.css';
-import { Strong, Span } from '@/app/_component/Text';
+import { Typography } from '@/app/_component/Text';
 import { Button } from '@/app/_component/Button';
 import { User } from '@/model/User';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { useSession } from 'next-auth/react';
 import { MouseEventHandler } from 'react';
 
 type Props = {user: User};
@@ -21,8 +19,8 @@ export default function FollowRecommend({user}:Props){
           <img src={user.image} alt={user.id} />
         </style.UserImg>
         <style.UserInfo>
-          <Strong styleProps={{weight: "semiBold"}}>{user.nickname}</Strong>
-          <Span styleProps={{weight: "medium"}}>@{user.id}</Span>
+          <Typography as="strong" styleProps={{weight: 'semiBold'}}>{user.nickname}</Typography>
+          <Typography as="span" styleProps={{weight: 'medium'}}>@{user.id}</Typography>
         </style.UserInfo>
       </style.FollowUserInfo>
       <Button styleProps={{size: "small", variant: 'primary'}} onClick={onFollow}>팔로우</Button>

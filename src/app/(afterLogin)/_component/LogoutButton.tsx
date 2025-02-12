@@ -2,7 +2,7 @@
 import * as style from '@/app/styles/component/header.css';
 import { PostUserImgShade } from '@/app/styles/component/post.css';
 import { useRouter } from 'next/navigation';
-import { Strong, Span } from '@/app/_component/Text';
+import { Typography } from '@/app/_component/Text';
 import { signOut, useSession } from "next-auth/react";
 
 export default function LogoutButton(){
@@ -25,7 +25,10 @@ export default function LogoutButton(){
         <img src={`/images/${me.user?.image as string}`} alt={me.user?.email as string} />
         <PostUserImgShade />
       </style.UserImg>
-      <Strong styleProps={{weight: "semiBold"}}>{me.user?.name} <Span styleProps={{weight: "normal"}}>@{me.user?.email as string}</Span></Strong>
+      <Typography as="strong" styleProps={{weight: 'semiBold'}}>
+        {me.user?.name}
+        <Typography as="span">@{me.user?.email as string}</Typography>
+      </Typography>
     </style.LogoutButton>
   )
 }
