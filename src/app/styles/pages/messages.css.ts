@@ -25,9 +25,7 @@ export const UserImg = styled.div`
   }
 `;
 export const RoomChatInfo = styled.div``;
-export const RoomUserInfo = styled.div`
-> strong + span{color: ${({theme}) => theme.color.gray}
-`;
+export const RoomUserInfo = styled.div``;
 export const RoomLastChat = styled.div`
   ${spacing.mt(.6)};
   ${ellipsis(2)};
@@ -67,20 +65,14 @@ export const ChatUserInfo = styled.a`
     ${radius('50%')};
     overflow: hidden;
   }
-  > strong{
-    ${spacing.mt(1)};
-    + span{color: ${({theme}) => theme.color.gray}}
-  }
+  > strong{${spacing.mt(1)};}
 `;
 export const ChatContent = styled.div`${blank.pc(1.4)};`;
 export const Message = styled.div`
   display: flex;
   flex-direction: column;
   ${blank.pb(2.4)};
-  > p{
-    ${spacing.mt(.8)};
-    color: ${({theme}) => theme.color.gray};
-  }
+  > p{${spacing.mt(.8)};}
   &.myMessage{
     align-items: flex-end;
     > div{

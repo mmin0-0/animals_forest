@@ -26,7 +26,6 @@ export const PostBody = styled.div`
 `;
 export const PostMeta = styled.div`
   ${flexBox('row', 'flex-start', 'center', '1rem')};
-  span{color: ${({theme}) => theme.color.gray}}
   > span{white-space: nowrap;}
 `;
 export const postUserName = styled.a`
@@ -44,7 +43,7 @@ export const PostComment = styled.div`
   ${spacing.mt(1)};
   a{
     color: ${({theme}) => theme.color.mainColor};
-    font-size: ${({theme}) => theme.fontSize.xsmall};
+    font-size: ${({theme}) => theme.fontSize.small};
     &:hover{text-decoration: underline;}
   }
 `;

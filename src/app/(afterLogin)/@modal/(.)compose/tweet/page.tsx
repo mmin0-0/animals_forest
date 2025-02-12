@@ -73,7 +73,7 @@ export default function TweetModal() {
                 <style.OriginalPost>
                   <style.UserInfo>
                     <Typography as="strong" styleProps={{ weight: 'bold' }}>{parent.User.nickname}</Typography>
-                    <Typography styleProps={{ weight: 'bold' }}>{parent.User.id}</Typography>
+                    <Typography styleProps={{ weight: 'bold', color: 'secondary' }}>{parent.User.id}</Typography>
                   </style.UserInfo>
                   <style.PostContent>{parent.content}</style.PostContent>
                   <Typography>

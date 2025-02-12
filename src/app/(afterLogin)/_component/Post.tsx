@@ -45,9 +45,9 @@ export default function Post({ noImage, post }: Props) {
           <style.PostMeta>
             <style.postUserName href={`/${target.User.id}`} onClick={stopPropagation}>
               <Typography styleProps={{weight: 'semiBold'}}>{target.User.nickname}</Typography>
-              <Typography as="span" styleProps={{weight: 'medium'}}>@ {target.User.id}</Typography>
+              <Typography as="span" styleProps={{weight: 'medium', color: 'secondary'}}>@ {target.User.id}</Typography>
             </style.postUserName>
-            <Typography as="span">{dayjs(target.createdAt).fromNow(true)}</Typography>
+            <Typography as="span" styleProps={{color: 'secondary'}}>{dayjs(target.createdAt).fromNow(true)}</Typography>
           </style.PostMeta>
           {target.Parent && <style.PostComment>
             <Link href={`/${target.User.id}`} onClick={stopPropagation}>@{target.User.id} 님에게 보내는 답글</Link>

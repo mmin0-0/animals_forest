@@ -6,9 +6,9 @@ type Props = {trend: Hashtag};
 export default function Trend({trend}: Props){
   return (
     <style.TrendItem href={`/search?q=${encodeURIComponent(trend.title)}`}>
-      <Typography styleProps={{size: 'xsmall'}}>실시간 트렌드</Typography>
+      <Typography styleProps={{size: 'small'}}>실시간 트렌드</Typography>
       <Typography as="strong" styleProps={{weight: 'semiBold'}}>{trend.title}</Typography>
-      <Typography styleProps={{size: 'xsmall'}}>{`${trend.count.toLocaleString()} posts`}</Typography>
+      <Typography styleProps={{size: 'small'}}>{`${trend.count.toLocaleString()} posts`}</Typography>
     </style.TrendItem>
   )
 }

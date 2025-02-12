@@ -28,14 +28,14 @@ export default function MessageList() {
             return (
               <style.Message key={m.messageId} className="myMessage">
                 <style.MessageContent>{m.content}</style.MessageContent>
-                <Typography styleProps={{size: "xsmall"}}>{dayjs(m.createdAt).format('YYYY년 MM월 DD일 A HH시 mm분')}</Typography>
+                <Typography styleProps={{color: 'secondary'}}>{dayjs(m.createdAt).format('YYYY년 MM월 DD일 A HH시 mm분')}</Typography>
               </style.Message>
             )
           }
           return (
             <style.Message key={m.messageId} className="yourMessage">
               <style.MessageContent>{m.content}</style.MessageContent>
-              <Typography styleProps={{size: "xsmall"}}>{dayjs(m.createdAt).format('YYYY년 MM월 DD일 A HH시 mm분')}</Typography>
+              <Typography styleProps={{color: 'secondary'}}>{dayjs(m.createdAt).format('YYYY년 MM월 DD일 A HH시 mm분')}</Typography>
             </style.Message>
           )
         })}

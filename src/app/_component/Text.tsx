@@ -3,7 +3,7 @@ import { ElementType, forwardRef, ReactNode } from "react";
 import styled, { css } from 'styled-components';
 
 interface TxtStyle {
-  size?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
+  size?: 'small' | 'regular' | 'medium' | 'large' | 'xlarge';
   weight?: 'normal' | 'medium' | 'semiBold' | 'bold';
   color?: 'primary' | 'secondary' | 'light' | 'error';
 }
@@ -16,9 +16,9 @@ interface TxtProps {
 }
 
 const textStyle = ({ size, weight, color, theme }: TxtStyle & { theme: any }) => css`
-  font-size: ${size ? theme.fontSize[size] : '1.6rem'};
-  font-weight: ${weight ? theme.fontWeight[weight] : 400};
-  color: ${color ? theme.fontColor[color] : '#111111'};
+  font-size: ${size ? theme.fontSize[size] : size="regular"};
+  font-weight: ${weight ? theme.fontWeight[weight] : weight="normal"};
+  color: ${color ? theme.fontColor[color] : color="primary"};
 `;
 
 const StyledText = styled.p<TxtStyle>`

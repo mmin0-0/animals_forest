@@ -27,7 +27,7 @@ export default function Room({room}:Props){
         <style.RoomUserInfo>
           <Typography as="strong" styleProps={{weight: "bold"}}>{room.Receiver.nickname}</Typography>
           &nbsp;
-          <Typography as="span" styleProps={{weight: "medium"}}>{room.Receiver.id}</Typography>
+          <Typography as="span" styleProps={{weight: "medium", color: 'secondary'}}>{room.Receiver.id}</Typography>
           &nbsp;
           &nbsp;
           <Typography as="span">{dayjs(room.Messages.createdAt).fromNow(true)}</Typography>

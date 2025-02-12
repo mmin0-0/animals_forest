@@ -70,7 +70,7 @@ export default function UserInfo({ username }: Props) {
             </style.UserImg>
             <style.UserName>
               <Typography as="strong" styleProps={{ size: 'large', weight: 'bold' }}>{user.nickname}</Typography>
-              <Typography styleProps={{ weight: 'semiBold' }}>{`@${user.id}`}</Typography>
+              <Typography styleProps={{ weight: 'semiBold', color: 'secondary' }}>{`@${user.id}`}</Typography>
             </style.UserName>
           </style.InfoWrap>
           {
@@ -84,8 +84,8 @@ export default function UserInfo({ username }: Props) {
         </style.UserZone>
       </style.InfoBody>
       <style.FollowInfo>
-        <Typography styleProps={{ weight: 'semiBold' }}>{user._count.Followers} 팔로워</Typography>
-        <Typography styleProps={{ weight: 'semiBold' }}>{user._count.Followings} 팔로우 중</Typography>
+        <Typography styleProps={{ weight: 'semiBold', color: 'secondary' }}>{user._count.Followers} 팔로워</Typography>
+        <Typography styleProps={{ weight: 'semiBold', color: 'secondary' }}>{user._count.Followings} 팔로우 중</Typography>
       </style.FollowInfo>
     </style.UserInfo>
   )

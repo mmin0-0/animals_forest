@@ -27,7 +27,7 @@ export default function LogoutButton(){
       </style.UserImg>
       <Typography as="strong" styleProps={{weight: 'semiBold'}}>
         {me.user?.name}
-        <Typography as="span">@{me.user?.email as string}</Typography>
+        <Typography as="span" styleProps={{color: 'secondary'}}>@{me.user?.email as string}</Typography>
       </Typography>
     </style.LogoutButton>
   )

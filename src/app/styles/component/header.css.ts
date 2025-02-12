@@ -81,7 +81,6 @@ export const LogoutButton = styled.button`
   border: 0;
   background: transparent;
   ${media.sm`justify-content: center;`}
-  span{color: ${({theme}) => theme.color.gray};}
   > strong{
     white-space: nowrap;
     ${media.sm`display: none;`}

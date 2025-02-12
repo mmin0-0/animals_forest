@@ -22,10 +22,7 @@ export const UserImg = styled.div`
   }
 `;
 export const UserInfo = styled.div`
-  span{
-    display: block;
-    font-size: ${({theme}) => theme.fontSize.small};
-  }
+  span{display: block;}
 `;
 
 // 상단 검색바(고정)
@@ -87,7 +84,6 @@ export const FollowItem = styled.a`
 `;
 export const FollowUserInfo = styled.div`
   ${flexBox('row', 'flex-start', 'center', '.6rem')};
-  span{color: ${({theme}) => theme.color.gray};}
 `;
 
 // 검색필터(search 페이지만 적용)

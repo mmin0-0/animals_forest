@@ -149,7 +149,6 @@ export const UserImg = styled.div`
 `;
 export const UserInfo = styled.div`
   ${flexBox('row', 'flex-start', 'center', '.4rem')};
-  p{color: ${({theme}) => theme.color.gray};}
 `;
 export const Original = styled.div`
   ${spacing.mb(1)};

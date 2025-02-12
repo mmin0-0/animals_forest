@@ -36,10 +36,7 @@ export const UserImg = styled.div`
   }
 `;
 export const UserName = styled.div`
-  p{
-    color: ${({theme}) => theme.color.gray};
-    ${spacing.mt(.6)};
-  }
+  p{${spacing.mt(.6)};}
 `;
 export const FollowInfo = styled.div`
   ${flexBox('row', 'flex-start', 'center', '1rem')};
@@ -48,7 +45,6 @@ export const FollowInfo = styled.div`
   p{
     white-space: nowrap;
     cursor: pointer;
-    color: ${({theme}) => theme.color.gray};
     &:hover{text-decoration: underline;}
   }
 `;

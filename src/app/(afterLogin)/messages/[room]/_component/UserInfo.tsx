@@ -30,7 +30,7 @@ export default function UserInfo({room}:Props) {
       <style.ChatUserInfo href={`/${user.id}`}>
         <img src={user.image} alt="user profile" />
         <Typography as="strong" styleProps={{weight: "semiBold"}}>{user.nickname}</Typography>
-        <Typography as="span" styleProps={{weight: "medium"}}>@{user.id}</Typography>
+        <Typography as="span" styleProps={{weight: "medium", color: 'secondary'}}>@{user.id}</Typography>
       </style.ChatUserInfo>
     </>
   )

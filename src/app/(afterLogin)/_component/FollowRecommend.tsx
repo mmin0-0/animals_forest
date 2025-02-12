@@ -20,7 +20,7 @@ export default function FollowRecommend({user}:Props){
         </style.UserImg>
         <style.UserInfo>
           <Typography as="strong" styleProps={{weight: 'semiBold'}}>{user.nickname}</Typography>
-          <Typography as="span" styleProps={{weight: 'medium'}}>@{user.id}</Typography>
+          <Typography as="span" styleProps={{size: 'small', weight: 'medium', color: 'secondary'}}>@{user.id}</Typography>
         </style.UserInfo>
       </style.FollowUserInfo>
       <Button styleProps={{size: "small", variant: 'primary'}} onClick={onFollow}>팔로우</Button>
