@@ -348,28 +348,15 @@ export const handlers = [
     return HttpResponse.json(
       [
         {
-          roomId: 1,
-          Receiver: User[1],
-          Sender: User[0],
-          Messages: {
-            content: {
-              ReceiverMessage: '하이하이',
-              SenderMessage: '반가워요'
-            }
+          messageId: 1,
+          roomId: roomId,
+          Sender: User[1],
+          Receiver: User[0],
+          content: {
+            SenderMessage: '하이하이',
+            ReceiverMessage: '반가워요:)'
           },
-          createdAt: new Date(),
-        },
-        {
-          roomId: 2,
-          Receiver: User[2],
-          Sender: User[0],
-          Messages: {
-            content: {
-              ReceiverMessage: '저랑 맞팔하실래요?',
-              SenderMessage: '좋아요!'
-            }
-          },
-          createdAt: new Date(),
+          createdAt: generateDate(),
         },
       ]
     )

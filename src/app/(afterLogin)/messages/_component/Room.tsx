@@ -30,10 +30,10 @@ export default function Room({room}:Props){
           <Typography as="span" styleProps={{weight: "medium", color: 'secondary'}}>{room.Receiver.id}</Typography>
           &nbsp;
           &nbsp;
-          <Typography as="span">{dayjs(room.Messages.createdAt).fromNow(true)}</Typography>
+          <Typography as="span">{dayjs(room.createdAt).fromNow(true)}</Typography>
         </style.RoomUserInfo>
         <style.RoomLastChat>
-          {room.Messages.content.SenderMessage}
+          {room.content.ReceiverMessage}
         </style.RoomLastChat>
       </style.RoomChatInfo>
     </style.RoomWrap>

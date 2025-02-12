@@ -1,14 +1,13 @@
 import { User } from "@/model/User";
 
 export interface Room {
+  messageId: number,
   roomId: string,
-  Receiver: User,
   Sender: User,
-  Messages: {
-    content: {
-      ReceiverMessage: string, 
-      SenderMessage: string, 
-    },
-    createdAt: Date,
-  };
+  Receiver: User,
+  content: {
+    SenderMessage: string,
+    ReceiverMessage: string
+  },
+  createdAt: Date,
 }
