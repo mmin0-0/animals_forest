@@ -6,20 +6,33 @@ import 'dayjs/locale/ko';
 import MessageForm from '@/app/(afterLogin)/messages/[roomId]/_component/MessageForm';
 import UserInfo from '@/app/(afterLogin)/messages/[roomId]/_component/UserInfo';
 import MessageList from '@/app/(afterLogin)/messages/[roomId]/_component/MessageList';
+import { dehydrate, HydrationBoundary, QueryClient } from "@tanstack/react-query";
+import { getMessages } from "./_lib/getMessages";
 
 dayjs.locale('ko');
 dayjs.extend(relativeTime)
 
-type Props = { params: Promise<{ room: string }> };
+type Props = {
+  params: Promise<{ messageId: string }>;
+}
 export default async function ChatRoom(props: Props) {
-  const { room } = await props.params;
+  const { messageId } = await props.params;
+  const queryClient = new QueryClient();
+  await queryClient.prefetchQuery({
+    queryKey: ['message', messageId],
+    queryFn: getMessages,
+  });
+
+  const dehydratedState = dehydrate(queryClient);
 
   return (
     <main>
       <style.RoomMain>
-          <UserInfo />
-          <MessageList />
-          <MessageForm />
+        <HydrationBoundary state={dehydratedState}>
+        <UserInfo messageId={messageId} />
+        <MessageList />
+        <MessageForm />
+        </HydrationBoundary>
       </style.RoomMain>
     </main>
   )

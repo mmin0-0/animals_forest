@@ -20,8 +20,9 @@ export default function Room({room}:Props){
   
   return (
     <style.RoomWrap onClickCapture={onClick}>
+      <a href={`/messages/${room.roomId}`}></a>
       <style.UserImg>
-        <img src={`${room.Receiver.image}`} alt=""/>
+        <img src={room.Receiver.image} alt={room.Receiver.id}/>
       </style.UserImg>
       <style.RoomChatInfo>
         <style.RoomUserInfo>
