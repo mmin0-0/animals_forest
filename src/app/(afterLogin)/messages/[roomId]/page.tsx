@@ -12,8 +12,8 @@ import { getMessages } from "./_lib/getMessages";
 dayjs.locale('ko');
 dayjs.extend(relativeTime)
 
-type Props = {params: { messageId: string}};
-export default async function ChatRoom({params}: Props) {
+type Props = { params: { messageId: any } };
+export default async function ChatRoom({ params }: Props) {
   const { messageId } = params;
   const queryClient = new QueryClient();
   await queryClient.prefetchQuery({
@@ -27,9 +27,9 @@ export default async function ChatRoom({params}: Props) {
     <main>
       <style.RoomMain>
         <HydrationBoundary state={dehydratedState}>
-        <UserInfo messageId={messageId} />
-        <MessageList />
-        <MessageForm />
+          <UserInfo messageId={messageId} />
+          <MessageList />
+          <MessageForm />
         </HydrationBoundary>
       </style.RoomMain>
     </main>
