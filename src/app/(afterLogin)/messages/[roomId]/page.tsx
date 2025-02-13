@@ -12,9 +12,11 @@ import { getMessages } from "./_lib/getMessages";
 dayjs.locale('ko');
 dayjs.extend(relativeTime)
 
-type Props = { params: { messageId: any } };
-export default async function ChatRoom({ params }: Props) {
-  const { messageId } = params;
+type Props = {
+  params: Promise<{ messageId: string }>;
+}
+export default async function ChatRoom(props: Props) {
+  const { messageId } = await props.params;
   const queryClient = new QueryClient();
   await queryClient.prefetchQuery({
     queryKey: ['message', messageId],
