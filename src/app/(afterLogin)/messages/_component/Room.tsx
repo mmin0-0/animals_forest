@@ -15,12 +15,12 @@ type Props = {room: IRoom};
 export default function Room({room}:Props){
   const router = useRouter();
   const onClick =() => {
-    router.push(`/messages/${room.roomId}`);
+    router.push(`/messages/${room.messageId}`);
   };
   
   return (
     <style.RoomWrap onClickCapture={onClick}>
-      <a href={`/messages/${room.roomId}`}></a>
+      <a href={`/messages/${room.messageId}`}></a>
       <style.UserImg>
         <img src={room.Receiver.image} alt={room.Receiver.id}/>
       </style.UserImg>
