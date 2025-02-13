@@ -92,6 +92,7 @@ export const Message = styled.div`
 export const MessageContent = styled.div`
   border-top-left-radius: 2rem;
   border-top-right-radius: 2rem;
+  line-height: 1.2;
   ${blank.px(1.6, 1.6)};
   ${blank.py(1.2, 1.2)};
 `;

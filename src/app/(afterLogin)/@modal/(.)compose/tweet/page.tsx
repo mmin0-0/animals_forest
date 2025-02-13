@@ -84,7 +84,7 @@ export default function TweetModal() {
             </style.Original> */}
             <style.PostUserSection>
               <style.UserImg>
-                <img src={`/images/${me?.user?.image as string}`} alt={me?.user?.email as string} />
+                <img src={`${me?.user?.image as string}`} alt={me?.user?.email as string} />
               </style.UserImg>
               <TextareaAutosize
                 name="tweetInput"

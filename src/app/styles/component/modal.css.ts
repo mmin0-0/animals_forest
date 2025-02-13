@@ -141,6 +141,7 @@ export const UserImg = styled.div`
   min-width: 4rem;
   ${size('4rem', '4rem')};
   ${radius('50%')};
+  ${border('1px', 'solid', ({theme}) => theme.color.gray02)};
   overflow: hidden;
   img{
     ${size('100%', '100%')};

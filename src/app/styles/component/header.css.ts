@@ -1,7 +1,7 @@
 'use client';
 import styled from 'styled-components';
 import { media } from '@/app/styles/media';
-import { blank, flexBox, size, spacing, radius, transition, position } from '@/app/styles/utils';
+import { blank, flexBox, size, spacing, radius, transition, position, border } from '@/app/styles/utils';
 
 export const Header = styled.header`
   display: flex;
@@ -78,8 +78,8 @@ export const LogoutButton = styled.button`
   ${spacing.mt(3.6)};
   ${blank.px(1,1)};
   ${flexBox('row', 'flex-start', 'center', '.6rem')};
-  border: 0;
   background: transparent;
+  border: 0;
   ${media.sm`justify-content: center;`}
   > strong{
     white-space: nowrap;
@@ -90,6 +90,7 @@ export const LogoutButton = styled.button`
 export const UserImg = styled.div`
   ${size('4rem', '4rem')};
   ${radius('50%')};
+  ${border('1px', 'solid', ({theme}) => theme.color.gray02)};
   overflow: hidden;
   position: relative;
   img{
