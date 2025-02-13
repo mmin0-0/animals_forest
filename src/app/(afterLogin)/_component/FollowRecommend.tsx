@@ -10,6 +10,7 @@ export default function FollowRecommend({user}:Props){
   const onFollow: MouseEventHandler<HTMLButtonElement> = (e) => {
     e.stopPropagation();
     e.preventDefault();
+    alert('준비 중 입니다!')
   };
 
   return (

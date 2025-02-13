@@ -38,7 +38,6 @@ export default function RightSearchZone() {
   }
 
   if (pathname === '/explore') {
-    console.log('탐색하기')
     return (
       <style.Wrap>
         <FollowRecommendSection />

@@ -10,7 +10,6 @@ import { getMessages } from '@/app/(afterLogin)/messages/[roomId]/_lib/getMessag
 
 type Props = { messageId: string };
 export default function UserInfo({messageId}:Props) {
-  console.log("UserInfo messageId:", messageId);
   const { data:message, error } = useQuery<Message, Object, Message, [_1: string, _2: string]>({
     queryKey: ['message', messageId],
     queryFn: getMessages,

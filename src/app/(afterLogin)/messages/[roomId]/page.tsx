@@ -14,9 +14,6 @@ dayjs.extend(relativeTime)
 
 type Props = {params: { messageId: string}};
 export default async function ChatRoom({params}: Props) {
-  console.log("ChatRoom params:", params);
-  console.log("ChatRoom messageId:", params.messageId);
-
   const { messageId } = params;
   const queryClient = new QueryClient();
   await queryClient.prefetchQuery({

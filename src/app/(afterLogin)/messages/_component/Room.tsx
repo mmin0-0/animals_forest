@@ -22,13 +22,13 @@ export default function Room({room}:Props){
     <style.RoomWrap onClickCapture={onClick}>
       <a href={`/messages/${room.messageId}`}></a>
       <style.UserImg>
-        <img src={room.Receiver.image} alt={room.Receiver.id}/>
+        <img src={room.Sender.image} alt={room.Sender.id}/>
       </style.UserImg>
       <style.RoomChatInfo>
         <style.RoomUserInfo>
-          <Typography as="strong" styleProps={{weight: "bold"}}>{room.Receiver.nickname}</Typography>
+          <Typography as="strong" styleProps={{weight: "bold"}}>{room.Sender.nickname}</Typography>
           &nbsp;
-          <Typography as="span" styleProps={{weight: "medium", color: 'secondary'}}>{room.Receiver.id}</Typography>
+          <Typography as="span" styleProps={{weight: "medium", color: 'secondary'}}>{room.Sender.id}</Typography>
           &nbsp;
           &nbsp;
           <Typography as="span">{dayjs(room.createdAt).fromNow(true)}</Typography>

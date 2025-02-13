@@ -23,7 +23,6 @@ const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 export const handlers = [
   http.post(`${baseUrl}/api/login`, () => {
-    console.log('로그인');
     return HttpResponse.json(User[0], {
       headers: {
         'Set-Cookie': 'connect.sid=msw-cookie;HttpOnly;Path=/'
@@ -31,7 +30,6 @@ export const handlers = [
     })
   }),
   http.post(`${baseUrl}/api/logout`, () => {
-    console.log('로그아웃');
     return new HttpResponse(null, {
       headers: {
         'Set-Cookie': 'connect.sid=;HttpOnly;Path=/;Max-Age=0'
@@ -39,7 +37,6 @@ export const handlers = [
     })
   }),
   http.post(`${baseUrl}/api/users`, async ({ request }) => {
-    console.log('회원가입');
     // return HttpResponse.text(JSON.stringify('user_exists'), {
     //   status: 403,
     // });
@@ -335,6 +332,17 @@ export const handlers = [
           content: {
             SenderMessage: '하이하이',
             ReceiverMessage: '반가워요:)'
+          },
+          createdAt: generateDate(),
+        },
+        {
+          messageId: 2,
+          roomId: 2,
+          Sender: User[4],
+          Receiver: User[0],
+          content: {
+            SenderMessage: '저랑 무트코인 거래하실래요?',
+            ReceiverMessage: '좋아요!'
           },
           createdAt: generateDate(),
         },

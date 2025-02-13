@@ -14,11 +14,13 @@ export default function FollowRecommendSection(){
     gcTime: 300 * 1000,
   });
   
+  const users = data?.slice(1);
+
   return (
     <style.FollowWrap>
       <Typography as="h4" styleProps={{weight: 'semiBold'}}>팔로우 추천</Typography>
       <style.FollowCont>
-        {data?.map((user) => <FollowRecommend key={user.id} user={user} />)}
+        {users?.map((user) => <FollowRecommend key={user.id} user={user} />)}
       </style.FollowCont>
     </style.FollowWrap>
   )

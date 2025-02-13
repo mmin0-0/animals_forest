@@ -14,7 +14,7 @@ export default function PostForm() {
   const [content, setContent] = useState('');
   const [preview, setPreview] = useState<Array<{ dataUrl: string, file: File } | null>>([]);
 
-  const onSubmit = () => {};
+  const onSubmit = () => {alert('준비 중 입니다!')};
   const onChange: ChangeEventHandler<HTMLTextAreaElement> = (e) => { setContent(e.target.value) };
 
   const onClickButton: MouseEventHandler<HTMLButtonElement> = (e) => {

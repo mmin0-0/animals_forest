@@ -50,6 +50,7 @@ export default function UserInfo({ username }: Props) {
   const onFollow: MouseEventHandler<HTMLButtonElement> = (e) => {
     e.stopPropagation();
     e.preventDefault();
+    alert('준비 중 입니다!');
   };
 
   const onMessage = () => {

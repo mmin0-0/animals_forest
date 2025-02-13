@@ -13,7 +13,7 @@ export default function CommentForm({id}:Props) {
   const [ content, setContent ] = useState('');
   const imageRef = useRef<HTMLInputElement>(null);
 
-  const onSubmit = () => {console.log('comment form')};
+  const onSubmit = () => {alert('준비 중 입니다!')};
 
   const onChange: ChangeEventHandler<HTMLTextAreaElement> = (e) => { setContent(e.target.value) };
 

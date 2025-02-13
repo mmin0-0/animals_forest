@@ -15,10 +15,9 @@ export default function MessageForm() {
     setContent(e.target.value)
   };
 
-  const onSubmit = () => {};
+  const onSubmit = () => {alert('준비 중 입니다!')};
 
   const onEnter: KeyboardEventHandler<HTMLTextAreaElement> = (e) => {
-    console.log(e.key === 'Enter', e);
     if (e.key === 'Enter') {
       if (e.shiftKey) {
         return;

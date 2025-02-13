@@ -55,6 +55,7 @@ export default function TweetModal() {
 
   const onSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
+    alert('준비 중 입니다!')
   };
 
   return (
