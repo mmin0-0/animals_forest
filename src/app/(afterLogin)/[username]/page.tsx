@@ -22,7 +22,7 @@ export async function generateMetadata({params}: Props) {
       description: `${user.nickname}(${user.id}) 프로필`,
       images: [
         {
-          url: `localhost:3000${user.image}`,
+          url: `https://animals-forest.vercel.app/${user.image}`,
           width: 400,
           height: 400
         }

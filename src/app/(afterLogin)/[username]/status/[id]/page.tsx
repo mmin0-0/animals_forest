@@ -28,12 +28,12 @@ export async function generateMetadata({params}: Props) {
       description: post.content,
       images: post.Images?.length > 0 ?
       post.Images?.map((v) => ({
-        url: `localhost:3000${v.link}`,
+        url: `https://animals-forest.vercel.app/${v.link}`,
         width: 600,
         height: 400
       })) : [
         {
-          url: `localhost:3000${user.image}`,
+          url: `https://animals-forest.vercel.app/${user.image}`,
           width: 400,
           height: 400
         }
