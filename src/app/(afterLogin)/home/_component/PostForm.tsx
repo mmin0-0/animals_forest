@@ -2,7 +2,7 @@
 import { Button, UploadButton } from '@/app/_component/Button';
 import { FileInput } from '@/app/_component/Input';
 import * as style from '@/app/styles/component/post.css';
-import { ChangeEventHandler, FormEvent,MouseEventHandler, useRef, useState } from 'react';
+import { ChangeEventHandler, MouseEventHandler, useRef, useState } from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
 import { PostImageZone, PostImageBox } from '@/app/styles/component/afterLayout.css';
 import { ActionButton } from '@/app/_component/Button';
@@ -23,11 +23,11 @@ export default function PostForm() {
   };
 
   const onRemoveImage = (index: number) => () => {
-    // setPreview((prevPreview) => {
-    //   const prev = [...prevPreview];
-    //   prev[index] = null;
-    //   return prev;
-    // })
+    setPreview((prevPreview) => {
+      const prev = [...prevPreview];
+      prev[index] = null;
+      return prev;
+    })
   };
 
   const onUpload: ChangeEventHandler<HTMLInputElement> = (e) => {

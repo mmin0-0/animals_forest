@@ -10,7 +10,8 @@ import { getMessages } from '@/app/(afterLogin)/messages/[roomId]/_lib/getMessag
 
 type Props = { messageId: string };
 export default function UserInfo({messageId}:Props) {
-  const { data:message, error } = useQuery<Message, Object, Message, [_1: string, _2: string]>({
+  const user = { id: 'test01', nickname: 'kk', image: '/images/user/profile01.png'};
+  const { data:message } = useQuery<Message, Object, Message, [_1: string, _2: string]>({
     queryKey: ['message', messageId],
     queryFn: getMessages,
     staleTime: 60 * 1000,
@@ -21,12 +22,12 @@ export default function UserInfo({messageId}:Props) {
     <>
       <PageHeader>
         <BackButton />
-        <Typography as="h4" styleProps={{ weight: "semiBold" }}>{message?.Receiver?.nickname}</Typography>
+        <Typography as="h4" styleProps={{ weight: "semiBold" }}>{user.nickname}</Typography>
       </PageHeader>
-      <style.ChatUserInfo href={`/${message?.Receiver?.id}`}>
-        <img src={message?.Receiver?.image} alt="user profile" />
-        <Typography as="strong" styleProps={{ weight: "semiBold" }}>{message?.Receiver?.nickname}</Typography>
-        <Typography as="span" styleProps={{ weight: "medium", color: 'secondary' }}>@{message?.Receiver?.id}</Typography>
+      <style.ChatUserInfo href={`/${user.id}`}>
+        <img src={user.image} alt="user profile" />
+        <Typography as="strong" styleProps={{ weight: "semiBold" }}>{user.nickname}</Typography>
+        <Typography as="span" styleProps={{ weight: "medium", color: 'secondary' }}>@{user.id}</Typography>
       </style.ChatUserInfo>
     </>
   )

@@ -11,10 +11,11 @@ dayjs.extend(relativeTime);
 
 export default function MessageList() {
   const user = {
-    id: 'hero',
-    nickname: '영웅',
-    image: faker.image.avatar(),
-  }
+    id: 'test', 
+    nickname: '여울', 
+    image: '/images/user/profile.png'
+  };
+  
   const messages = [
     { messageId: 1, roomId: 123, id: 'test', content: '안녕하세요.', createdAt: new Date() },
     { messageId: 2, roomId: 123, id: 'test01', content: '안녕히가세요.', createdAt: new Date() },

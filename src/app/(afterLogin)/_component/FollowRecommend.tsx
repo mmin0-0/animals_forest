@@ -3,14 +3,15 @@ import * as style from '@/app/styles/pages/rightSearchZone.css';
 import { Typography } from '@/app/_component/Text';
 import { Button } from '@/app/_component/Button';
 import { User } from '@/model/User';
-import { MouseEventHandler } from 'react';
+import { MouseEventHandler, useState } from 'react';
 
 type Props = {user: User};
 export default function FollowRecommend({user}:Props){
+  const [isFollowing, setIsFollowing] = useState(false);
   const onFollow: MouseEventHandler<HTMLButtonElement> = (e) => {
     e.stopPropagation();
     e.preventDefault();
-    alert('준비 중 입니다!')
+    setIsFollowing((prev) => !prev);
   };
 
   return (
@@ -24,7 +25,7 @@ export default function FollowRecommend({user}:Props){
           <Typography as="span" styleProps={{size: 'small', weight: 'medium', color: 'secondary'}}>@{user.id}</Typography>
         </style.UserInfo>
       </style.FollowUserInfo>
-      <Button styleProps={{size: "small", variant: 'primary'}} onClick={onFollow}>팔로우</Button>
+      <Button styleProps={{size: "small", variant: isFollowing ? 'secondary' : 'primary'}} onClick={onFollow}>{isFollowing ? '팔로잉' : '팔로우'}</Button>
     </style.FollowItem>
   )
 }

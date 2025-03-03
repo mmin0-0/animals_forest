@@ -1,6 +1,5 @@
 'use client';
 import * as style from '@/app/styles/pages/messages.css';
-import {faker} from "@faker-js/faker";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import 'dayjs/locale/ko';
