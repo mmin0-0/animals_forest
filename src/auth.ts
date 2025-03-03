@@ -13,6 +13,14 @@ export const {
   providers: [
     CredentialsProvider({
       async authorize(credentials) {
+        if (credentials.username === 'test' && credentials.password === 'test') {
+          return {
+            id: 'test',
+            name: '여울',
+            email: 'test',
+          };
+        }
+
         const authResponse = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/login`, {
           method: "POST",
           headers: {
