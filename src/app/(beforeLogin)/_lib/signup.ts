@@ -18,7 +18,7 @@ export default async (prevState: { message: string | null }, formData: FormData)
   formData.set('nickname', formData.get('name') as string);
   let shouldRedirect = false;
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/users`, {
+    const response = await fetch(`/api/users`, {
       method: 'post',
       body: formData,
       credentials: 'include',

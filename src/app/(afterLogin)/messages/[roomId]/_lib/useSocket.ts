@@ -12,7 +12,7 @@ export default function useSocket(): [Socket | null, () => void] {
 
   useEffect(() => {
     if (!socket) {
-      socket = io(`${process.env.NEXT_PUBLIC_BASE_URL}/messages`, {
+      socket = io(`/messages`, {
         transports: ['websocket']
       });
       socket.on('connect_error', (err) => {

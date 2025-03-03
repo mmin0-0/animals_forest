@@ -22,21 +22,21 @@ const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 export const handlers = [
-  http.post(`${baseUrl}/api/login`, () => {
+  http.post(`/api/login`, () => {
     return HttpResponse.json(User[0], {
       headers: {
         'Set-Cookie': 'connect.sid=msw-cookie;HttpOnly;Path=/'
       },
     })
   }),
-  http.post(`${baseUrl}/api/logout`, () => {
+  http.post(`/api/logout`, () => {
     return new HttpResponse(null, {
       headers: {
         'Set-Cookie': 'connect.sid=;HttpOnly;Path=/;Max-Age=0'
       }
     })
   }),
-  http.post(`${baseUrl}/api/users`, async ({ request }) => {
+  http.post(`/api/users`, async ({ request }) => {
     // return HttpResponse.text(JSON.stringify('user_exists'), {
     //   status: 403,
     // });
@@ -46,7 +46,7 @@ export const handlers = [
       },
     });
   }),
-  http.get(`${baseUrl}/api/postRecommends`, async ({ request }) => {
+  http.get(`/api/postRecommends`, async ({ request }) => {
     await delay(3000);
     const url = new URL(request.url);
     const cursor = parseInt(url.searchParams.get('cursor') as string) || 0;
@@ -102,7 +102,7 @@ export const handlers = [
       ]
     )
   }),
-  http.get(`${baseUrl}/api/followingPosts`, async ({ request }) => {
+  http.get(`/api/followingPosts`, async ({ request }) => {
     await delay(3000);
     const url = new URL(request.url);
     const cursor = parseInt(url.searchParams.get('cursor') as string) || 0;
@@ -154,7 +154,7 @@ export const handlers = [
       ]
     )
   }),
-  http.get(`${baseUrl}/api/search/:tag`, async ({ request, params }) => {
+  http.get(`/api/search/:tag`, async ({ request, params }) => {
     const { tag } = params;
     return HttpResponse.json(
       [
@@ -196,7 +196,7 @@ export const handlers = [
       ]
     )
   }),
-  http.get(`${baseUrl}/api/users/:userId`, async ({ request, params }) => {
+  http.get(`/api/users/:userId`, async ({ request, params }) => {
     const { userId } = params;
     const found = User.find((v) => v.id === userId);
 
@@ -207,7 +207,7 @@ export const handlers = [
       status: 404
     })
   }),
-  http.get(`${baseUrl}/api/users/:userId/posts`, async ({ request, params }) => {
+  http.get(`/api/users/:userId/posts`, async ({ request, params }) => {
     const { userId } = params;
     return HttpResponse.json(
       [
@@ -249,7 +249,7 @@ export const handlers = [
       ]
     )
   }),
-  http.get(`${baseUrl}/api/posts/:postId`, async ({ request, params }) => {
+  http.get(`/api/posts/:postId`, async ({ request, params }) => {
     const { postId } = params;
     if (parseInt(postId as string) > 10) {
       return HttpResponse.json({ message: 'no_such_post' }, {
@@ -270,7 +270,7 @@ export const handlers = [
       }
     )
   }),
-  http.get(`${baseUrl}/api/posts/:postId/comments`, async ({ request, params }) => {
+  http.get(`/api/posts/:postId/comments`, async ({ request, params }) => {
     const { postId } = params;
     return HttpResponse.json(
       [
@@ -305,10 +305,10 @@ export const handlers = [
       ]
     )
   }),
-  http.get(`${baseUrl}/api/followRecommends`, async ({ request }) => {
+  http.get(`/api/followRecommends`, async ({ request }) => {
     return HttpResponse.json(User);
   }),
-  http.get(`${baseUrl}/api/trends`, ({ request }) => {
+  http.get(`/api/trends`, ({ request }) => {
     return HttpResponse.json(
       [
         { tagId: 1, title: '모여봐요 동물의 숲2', count: 1297399 },
@@ -320,7 +320,7 @@ export const handlers = [
       ]
     )
   }),
-  http.get(`${baseUrl}/api/messages/:roomId`, async ({ request, params }) => {
+  http.get(`/api/messages/:roomId`, async ({ request, params }) => {
     const { roomId } = params;
     return HttpResponse.json(
       [
@@ -349,7 +349,7 @@ export const handlers = [
       ]
     )
   }),
-  http.get(`${baseUrl}/api/messages/:messageId`, async ({ request, params }) => {
+  http.get(`/api/messages/:messageId`, async ({ request, params }) => {
     const { messageId } = params;
     return HttpResponse.json(
       {

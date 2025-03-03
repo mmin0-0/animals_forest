@@ -21,7 +21,7 @@ export const {
           };
         }
 
-        const authResponse = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/login`, {
+        const authResponse = await fetch(`/api/login`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

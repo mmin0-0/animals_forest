@@ -3,7 +3,7 @@ import { Message } from "@/model/Message";
 
 export const getMessages:QueryFunction<Message, [_1: string, _2: string]> = async({queryKey}) => {
   const [_1, messageId] = queryKey;
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/messages/${messageId}`, {
+  const res = await fetch(`/api/messages/${messageId}`, {
     next: { tags: ['message', messageId] },
     credentials: 'include',
   });

@@ -3,7 +3,7 @@ import { Room as IRoom } from "@/model/Room";
 
 export const getRooms:QueryFunction<IRoom[], [_1: string, _2: string]> = async({queryKey}) => {
   const [_1, roomId] = queryKey;
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/messages/${roomId}`, {
+  const res = await fetch(`/api/messages/${roomId}`, {
     next: {
       tags: ['rooms', roomId],
     },
