@@ -8,14 +8,15 @@ import { useInView } from "react-intersection-observer";
 import { LoadingWrap, Loader } from '@/app/styles/pages/home.css';
 
 export default function PostRecommends() {
-  const { data, hasNextPage, fetchNextPage, isFetching, isPending } = useSuspenseInfiniteQuery<IPost[], Object, InfiniteData<IPost[]>, [_1: string, _2: string], number>({
-    queryKey: ['posts', 'recommends'],
-    queryFn: getPostRecommends,
-    initialPageParam: 0,
-    getNextPageParam: (lastPage) => lastPage.at(-1)?.postId,
-    staleTime: 60 * 1000,
-    gcTime: 300 * 1000,
-  });
+  const { data, hasNextPage, fetchNextPage, isFetching, isPending } =
+    useSuspenseInfiniteQuery<IPost[], Object, InfiniteData<IPost[]>, [_1: string, _2: string], string>({
+      queryKey: ['posts', 'recommends'],
+      queryFn: getPostRecommends,
+      initialPageParam: "",
+      getNextPageParam: (lastPage) => lastPage.at(-1)?.createdAt,
+      staleTime: 60 * 1000,
+      gcTime: 300 * 1000,
+    });
 
   const { ref, inView } = useInView({
     threshold: 0,

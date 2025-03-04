@@ -10,38 +10,35 @@ export const {
     signIn: '/i/flow/login',
     newUser: '/i/flow/signup',
   },
+  session: {
+    strategy: 'jwt'
+  },
   providers: [
     CredentialsProvider({
       async authorize(credentials) {
-        try {
-          const authResponse = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/user/test`, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              id: credentials.username,
-              password: credentials.password,
-            }),
-          })
-  
-          if (!authResponse.ok) {
-              throw new Error('아이디 또는 비밀번호가 올바르지 않습니다.');
-            }
-  
-          const user = await authResponse.json();
-          console.log('user', user);
+        const { username, password } = credentials;
+        if(username === 'test' && password === 'test'){
           return {
-            email: user.id,
-            name: user.nickname,
-            image: user.image,
-            ...user,
+            email: 'test',
+            nickname: '여울',
+            image: '/images/user/profile.png'
           }
-        } catch(error){
-          console.error('로그인 실패:', error);
-          throw new Error('로그인 요청 중 오류가 발생했습니다.');
         }
+        throw new Error('아이디 또는 비밀번호가 올바르지 않습니다.');
       },
     }),
-  ]
+  ],
+  callbacks: {
+    async session({ session, token }) {
+      session.user.id = token.id as string;
+      return session;
+    },
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user.id as string;
+      }
+      return token;
+    },
+  },
+  secret: process.env.NEXT_AUTH_SECRET,
 });

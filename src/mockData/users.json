@@ -1,0 +1,32 @@
+[
+  {
+    "id": "test",
+    "nickname": "여울",
+    "image": "/images/user/profile.png",
+    "_count": { "Followers": 0, "Followings": 1 }
+  },
+  {
+    "id": "test01",
+    "nickname": "kk",
+    "image": "/images/user/profile01.png",
+    "_count": { "Followers": 3, "Followings": 0 }
+  },
+  {
+    "id": "test02",
+    "nickname": "너굴",
+    "image": "/images/user/profile02.png",
+    "_count": { "Followers": 3, "Followings": 1 }
+  },
+  {
+    "id": "test03",
+    "nickname": "뽀야미",
+    "image": "/images/user/profile03.png",
+    "_count": { "Followers": 1, "Followings": 2 }
+  },
+  {
+    "id": "test04",
+    "nickname": "애플",
+    "image": "/images/user/profile04.png",
+    "_count": { "Followers": 0, "Followings": 4 }
+  }
+]
