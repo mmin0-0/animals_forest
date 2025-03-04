@@ -16,23 +16,18 @@ export default function LoginModal() {
   const onSubmit:FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
     setMessage('');
-    try {
-      const result = await signIn('credentials', {
-        username: id,
-        password,
-        redirect: false,
-      });
-      console.log(result);
-      if(result?.code === 'no_user'){
-        setMessage('가입하지 않은 유저입니다.');
-      } else if(result?.code === 'wrong_password'){
-        setMessage('비밀번호가 틀렸습니다.');
-      }
-      router.replace('/home');
-    } catch(error){
-      console.error(error);
+
+    const result = await signIn('credentials', {
+      username: id,
+      password,
+      redirect: false,
+    });
+
+    if (result?.error) {
       setMessage('아이디와 비밀번호가 일치하지 않습니다.');
+      return;
     }
+    router.replace('/home');
   };
 
   const onChangeId:ChangeEventHandler<HTMLInputElement> = (e) => {

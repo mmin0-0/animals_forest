@@ -13,42 +13,33 @@ export const {
   providers: [
     CredentialsProvider({
       async authorize(credentials) {
-        if (credentials.username === 'test' && credentials.password === 'test') {
+        try {
+          const authResponse = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/user/test`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              id: credentials.username,
+              password: credentials.password,
+            }),
+          })
+  
+          if (!authResponse.ok) {
+              throw new Error('아이디 또는 비밀번호가 올바르지 않습니다.');
+            }
+  
+          const user = await authResponse.json();
+          console.log('user', user);
           return {
-            id: 'test',
-            name: '여울',
-            email: 'test',
-          };
-        }
-
-        const authResponse = await fetch(`/api/login`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            id: credentials.username,
-            password: credentials.password,
-          }),
-        })
-
-        if (!authResponse.ok) {
-          const credentialsSignin = new CredentialsSignin();
-          if (authResponse.status === 404) {
-            credentialsSignin.code = 'no_user';
-          } else if (authResponse.status === 401) {
-            credentialsSignin.code = 'wrong_password';
+            email: user.id,
+            name: user.nickname,
+            image: user.image,
+            ...user,
           }
-          throw credentialsSignin;
-        }
-
-        const user = await authResponse.json()
-        console.log('user', user);
-        return {
-          email: user.id,
-          name: user.nickname,
-          image: user.image,
-          ...user,
+        } catch(error){
+          console.error('로그인 실패:', error);
+          throw new Error('로그인 요청 중 오류가 발생했습니다.');
         }
       },
     }),
